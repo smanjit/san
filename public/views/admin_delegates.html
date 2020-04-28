@@ -1,0 +1,85 @@
+<div class="topnav">
+  <a href="#/login"><button  style="float:right;margin-top:-10px;" type="submit" class="mybutton">LOGOUT</button></a>
+  <a href="#/admin_dashboard"><button  style="float:right;margin-top:-10px;margin-right:-28px;" type="submit" class="mybutton">HOME</button></a>
+
+
+  <img style="margin-left: 40px; margin-top: 10px" src="../graphic/123.png" height="40px" width="90px">
+  <a  onclick="document.getElementById('01').style.display='block'"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color="#3399FF">{{username}}</font></a>
+  <a style="margin-right: 650px; position: absolute" href="#/dashboard">&nbsp;&nbsp;&nbsp;Clapper Tool</a>
+
+</div>
+
+<div class="sidemenu">
+
+  <div class="topperform">
+    <a href="#/admin_names"><img src="images/top.png" width="60px" height="60px"></a>
+    <p>&nbsp;Add_Names</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_functionalteams"><img src="images/accom.png" width="60px" height="60px"></a>
+    <p>FunctionalTeams</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_delegates"><img src="images/deleg.png" width="60px" height="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></a>
+    <p>Delegation</p>
+  </div>
+</div>
+<style>
+img{
+  vertical-align: middle;
+}
+
+</style>
+
+ <form class="formarea" ng-submit="delegate(item)">
+     <div class="container" style="width: 70%">
+       <h4 STYLE="text-align: center"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;DELEGATE</h4><br>
+
+ IBM intranet ID
+ <input style="width: 25%" type="text" ng-model="item.userid" required>
+ <br><br>
+ Functional Team (hold ctrl to select mutiple)<br><br>
+
+   <select multiple="multiple" class="wrapper" ng-model="item.myteams" style="width:30%;overflow-y: auto;max-height: 50px;" required>
+     <option ng-repeat="x in functionalteams" value="{{x.fteam}}">{{x.fteam}}</option>
+   </select>
+   <br><br>
+
+  <input type="submit" value="DELEGATE" class="mybutton" >
+</form>
+
+<br><br><br>
+<div style="width:60%">
+<table style="margin-right:30px;">
+    <tr style="color:white;background-color:gray;" >
+      <th style="width:40%">USER ID</th>
+      <th style="width:30%;" >FUNCTIONAL TEAM</th>
+      <th style="width:30%;" >DELETE</th>
+
+    </tr>
+    <tr ng-repeat="item in delegations" >
+      <th>{{item.userid}}</th>
+      <th><span ng-repeat="x in item.myteams"><ul>{{x}}</ul></span></th>
+
+      <th><button ng-click="deletedelegate(item)">DELETE</button></th>
+    </tr>
+  </table>
+</div>
+<!--
+
+<script>
+$(".chosen-select").chosen({
+no_results_text: "Oops, nothing found!"
+})
+</script>
+
+
+<select id="dd" data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test" style="width:300px" ng-model="data.fteams">
+  <option  value=""></option>
+  <option > a</option>
+  <option > b</option>
+
+</select>
+ -->

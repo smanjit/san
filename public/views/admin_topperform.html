@@ -1,0 +1,82 @@
+<div class="topnav">
+<a href="#/login"><button  style="float:right;margin-top:-10px;" type="submit" class="mybutton">LOGOUT</button></a>
+<a href="#/admin_names"><button  style="float:right;margin-top:-10px;margin-right:-28px;" type="submit" class="mybutton">MANAGE</button></a>
+
+<img style="margin-left: 40px; margin-top: 10px" src="../graphic/123.png" height="40px" width="90px">
+  <a onclick="document.getElementById('01').style.display='block'"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color="black" >{{username}}</font></a>
+  <a style="margin-right: 650px; position: absolute" href="#/dashboard">&nbsp;&nbsp;&nbsp;Clapper Tool</a>
+
+</div>
+
+<div class="sidemenu">
+  <div class="dashboard">
+    <a href="#/admin_dashboard"><img src="images/dashboard.png" width="60px" height="60px"></a>
+    <p>&nbsp;&nbsp;Dashboard</p>
+  </div>
+  <br><br>
+  <div class="topperform">
+    <a href="#/admin_topperform"><img src="images/top.png" width="60px" height="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></a>
+    <p>&nbsp;Top Performer's</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_accomplishment"><img src="images/accom.png" width="60px" height="60px"></a>
+    <p>Accomplishment</p>
+  </div>
+
+</div>
+<style>
+img{
+  vertical-align: middle;
+}
+</style>
+
+<form class="formarea" ng-submit="topperformer(item)">
+
+<div class="container" style="width: 50%">
+<h3><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Top Performer's Screen</h3><br>
+
+<label style="font-family: sans-serif"><b>From</b></label>&nbsp;&nbsp;&nbsp;
+<input style="width: 30%; height: 30px" type="date" name="date" ng-model="item.startdate" placeholder="date" max="{{today}}"  required><br><br><br>
+
+<label style="font-family: sans-serif"><b>To</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input style="width: 30%; height: 30px" type="date" name="date" ng-model="item.enddate" max="{{today}}" required><br><br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="mybutton">SUBMIT</button>
+</div>
+</form>
+<div class="formarea">
+<div class="container" style="width:50%;padding-right:50px;">
+
+<table style="margin-right:30px;" width="400">
+    <tr style="color:white;background-color:gray;" >
+      <th width="100" STYLE="color:black;text-align:center;">RANK</th>
+      <th width="200" STYLE="color:black;text-align:center;" >USERNAME</th>
+      <th width="100" STYLE="color:black;text-align:center;">POINTS</th>
+    </tr>
+    <tr ng-repeat="item in topperform" >
+      <th STYLE="color:black;text-align:center;">{{$index + 1}}</th>
+      <th STYLE="color:black;text-align:left;">{{item.username}}</th>
+      <th STYLE="color:black;text-align:center;"><a href="javascript:;" ng-click="GetParticularDetails(item)"> {{item.point}} </a></th>
+</tr>
+  </table>
+</div>
+<div id="viewModel">
+<ul ng-repeat="(key,value) in points">
+ <div ng-if="value != '0'">
+    <li>{{key}}&ensp; {{value}}</li>
+    </div>
+</ul>
+</div>
+</div>
+
+<style>
+#viewModel{
+position:fixed;
+right:12px;
+top:28em;
+width:330px;
+background-color:#F5F5F5;
+padding-right:2.5em;
+}
+</style>

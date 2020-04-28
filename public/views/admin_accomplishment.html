@@ -1,0 +1,113 @@
+<div class="topnav">
+  <a href="#/login"><button  style="float:right;margin-top:-10px;" type="submit" class="mybutton">LOGOUT</button></a>
+  <a href="#/admin_names"><button  style="float:right;margin-top:-10px;margin-right:-28px;" type="submit" class="mybutton">MANAGE</button></a>
+
+  <img style="margin-left: 40px; margin-top: 10px" src="../graphic/123.png" height="40px" width="90px">
+
+  <a  onclick="document.getElementById('01').style.display='block'"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color="#3399FF">{{username}}</font></a>
+  <a style="margin-right: 650px; position: absolute" href="#/dashboard">&nbsp;&nbsp;&nbsp;Clapper Tool</a>
+
+</div>
+
+<div class="sidemenu">
+  <div class="dashboard">
+    <a href="#/admin_dashboard"><img src="images/dashboard.png" width="60px" height="60px"></a>
+    <p>&nbsp;&nbsp;Dashboard</p>
+  </div>
+  <br><br>
+  <div class="topperform">
+    <a href="#/admin_topperform"><img src="images/top.png" width="60px" height="60px"></a>
+    <p>&nbsp;Top Performer's</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_accomplishment"><img src="images/accom.png" width="60px" height="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></a>
+    <p>Accomplishment</p>
+  </div>
+
+</div>
+<style>
+img{
+  vertical-align: middle;
+}
+</style>
+
+<form name="myform" class="formarea" ng-submit="addform(item)">
+
+<div class="container" style="width: 50%">
+<h3><i class="fa fa-check-square-o"  aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Accomplishment</h3><br>
+
+<label style="font-family: sans-serif"><b>Title</b></label>&nbsp;&nbsp;&emsp;&emsp;
+<input style="width: 60%" type="text" name="title" ng-model="item.title" required><br><br>
+
+<label style="font-family: sans-serif"><b>Type</b></label>&nbsp;&nbsp;&emsp;&emsp;
+<select style="width: 160px; height: 30px" ng-model="item.type" required>
+  <!-- <option selected disabled>SELECT</option> -->
+
+  <option value="badges">BADGES</option>
+  <option value="blog">BLOG</option>
+  <option value="asset">ASSET</option>
+  <option value="dw_article">EXTERNAL ARTICLE</option>
+  <option value="patent">PATENT</option>
+  <option value="forum">FORUM</option>
+  <option value="ur">UR</option>
+  <option value="rfe">RFE</option>
+  <option value="enablement">ENABLEMENT SESSION</option>
+  <option value="certifications">CERTIFICATIONS</option>
+  <option value="giveback">GIVEBACK</option>
+
+</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<label style="font-family: sans-serif"><b>Type Name</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select style="width: 150px; height: 30px" ng-model="item.name" required>
+  <!-- <option selected disabled>SELECT</option> -->
+
+  <option ng-repeat="x in typenames" ng-if="x.type==item.type" value="{{x.name}}|{{x.point}}" >{{x.name}}</option>
+
+
+</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br>
+<br>
+<label style="font-family: sans-serif"><b>Date</b></label>&nbsp;&nbsp;&emsp;&emsp;
+<input style="width: 150px; height: 30px" type="date" name="date" ng-model="item.date" max={{today}} required>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label style="font-family: sans-serif"><b>Functional Team</b></label>&nbsp;&nbsp;
+<select style="width: 150px; height: 30px"  ng-model="item.fteam" required>
+<!-- <option disabled selected>select</option> -->
+ <option ng-repeat="t in functionalteams" value="{{t.fteam}}">{{t.fteam}}</option>
+</select>
+
+<br><br>
+<div ng-show="item.type=='ur'" >
+<label style="font-family: sans-serif"><b>End Date</b></label>&nbsp;&nbsp;
+<input style="width: 150px; height: 30px" type="date" name="enddate" ng-model="item.enddate" ng-required="item.type=='ur'" min="{{item.date | date:'yyyy-MM-dd'}}" max="{{today}}">
+&nbsp;&nbsp;&nbsp;&nbsp;&emsp;
+<label style="font-family: sans-serif"><b>ILC Hours.</b></label>&nbsp;&nbsp;&emsp;&emsp;
+<input style="width: 150px; height: 30px" type="text" name="ilc" ng-model="item.ilc" ng-required="item.type=='ur'">
+<br>
+ <span ng-show="myform.ilc.$dirty && myform.ilc.$error.pattern" style="color:red">
+        ILC Hours should be non-negative and maximum 1 decimal
+ </span>
+<br><br>
+</div>
+<div ng-show="item.type=='badges'">
+<label style="font-family: sans-serif"><b>Url</b></label>&nbsp;&emsp;&emsp;&emsp;
+<input style="width: 60%" type="text"  ng-model="item.url" ng-required="item.type=='badges'" ><br><br>
+</div>
+
+<div ng-show="item.type=='blog'">
+<label style="font-family: sans-serif"><b>Url</b></label>&nbsp;&emsp;&emsp;&emsp;
+<input style="width: 60%" type="text"  ng-model="item.url" ng-required="item.type=='badges'" ><br><br>
+</div>
+
+<label style="font-family: sans-serif"><b>Description</b></label><br><br>
+<textarea style="width: 70%; height: 50px" name="description" ng-model="item.description" required></textarea><br><br>
+
+<button type="submit" class="mybutton" >CREATE</button>
+</div>
+
+</form>
+
+

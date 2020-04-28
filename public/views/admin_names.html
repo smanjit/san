@@ -1,0 +1,82 @@
+<div class="topnav">
+  <a href="#/login"><button  style="float:right;margin-top:-10px;" type="submit" class="mybutton">LOGOUT</button></a>
+  <a href="#/admin_dashboard"><button  style="float:right;margin-top:-10px;margin-right:-28px;" type="submit" class="mybutton">HOME</button></a>
+
+  <img style="margin-left: 40px; margin-top: 10px" src="../graphic/123.png" height="40px" width="90px">
+  <a  onclick="document.getElementById('01').style.display='block'"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color="#3399FF">{{username}}</font></a>
+  <a style="margin-right: 650px; position: absolute" href="#/dashboard">&nbsp;&nbsp;&nbsp;Clapper Tool</a>
+
+</div>
+
+<div class="sidemenu">
+  <div class="accomplishment">
+    <a href="#/admin_names"><img src="images/top.png" width="60px" height="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></a>
+    <p>Add Names</p>
+  </div>
+  <br><br>
+  <div class="dashboard">
+    <a href="#/admin_functionalteams"><img src="images/accom.png" width="60px" height="60px"></a>
+    <p>Functional Teams</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_delegates"><img src="images/deleg.png" width="60px" height="60px"></a>
+    <p>Delegation</p>
+  </div>
+</div>
+<style>
+img{
+  vertical-align: middle;
+}
+</style>
+
+  <form class="formarea" ng-submit="addnames(typename)">
+
+  <div class="container" style="width: 70%">
+  <h3><i class="fa fa-check-square-o"  aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Type Name</h3><br>
+
+  <label style="font-family: sans-serif"><b>Type</b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+  <select style="width: 160px; height: 40px" ng-model="typename.type" required>
+  <option value="badges">BADGES</option>
+  <option value="blog">BLOG</option>
+  <option value="asset">ASSET</option>
+  <option value="dw_article">EXTERNAL ARTICLE</option>
+  <option value="patent">PATENT</option>
+  <option value="forum">FORUM</option>
+  <option value="ur">UR</option>
+  <option value="rfe">RFE</option>
+  <option value="giveback">GIVEBACK</option>
+  <option value="enablement">ENABLEMENT SESSION</option>
+  <option value="certifications">CERTIFICATIONS</option>
+
+  </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br><br>
+
+  <label style="font-family: sans-serif"><b>Name </b></label>&nbsp;&nbsp;
+  <input style="width: 28%" type="text" name="title" placeholder="(optional)" ng-model="typename.name" ><br><br>
+
+  <label style="font-family: sans-serif"><b>Points</b></label>&nbsp;&nbsp;
+  <input style="width: 28%" type="number" min="0" name="title" ng-model="typename.point" required><br><br>
+
+  <button type="submit" class="mybutton">ADD</button>
+  </div>
+
+  </form>
+
+  <div class="formarea"  >
+  <div class="container" style="width:60%;padding-right:50px;">
+  <table style="margin-right:30px;">
+      <tr style="color:white;background-color:gray;" >
+        <th style="width:30%;" >TYPE</th>
+        <th style="width:30%">NAME</th>
+	<th style="width:30%">POINTS</th>
+        <th style="width:30%">DELETE</th>
+      </tr>
+      <tr ng-repeat="item in typenames" >
+        <th style="text-transform:uppercase">{{item.type}}</th>
+        <th>{{item.name}}</th>
+        <th  align="center">{{item.point}}</th>
+        <th><button ng-click="deletename(item)">DELETE</button></th>
+      </tr>
+    </table>
+  </div>

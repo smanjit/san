@@ -1,0 +1,90 @@
+
+
+<div class="topnav">
+  <a href="#/login"><button  style="float:right;margin-top:-10px;" type="submit" class="mybutton">LOGOUT</button></a>
+  <a href="#/admin_dashboard"><button  style="float:right;margin-top:-10px;margin-right:-28px;" type="submit" class="mybutton">HOME</button></a>
+
+
+  <img style="margin-left: 40px; margin-top: 10px" src="../graphic/123.png" height="40px" width="90px">
+  <a  onclick="document.getElementById('01').style.display='block'"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color="#3399FF">{{username}}</font></a>
+  <a style="margin-right: 650px; position: absolute" href="#/dashboard">&nbsp;&nbsp;&nbsp;Clapper Tool</a>
+
+</div>
+
+<div class="sidemenu">
+
+  <div class="topperform">
+    <a href="#/admin_names"><img src="images/top.png" width="60px" height="60px"></a>
+    <p>&nbsp;Add_Names</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_functionalteams"><img src="images/accom.png" width="60px" height="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></a>
+    <p>FunctionalTeams</p>
+  </div>
+  <br><br>
+  <div class="accomplishment">
+    <a href="#/admin_delegates"><img src="images/deleg.png" width="60px" height="60px"></a>
+    <p>Delegation</p>
+  </div>
+</div>
+<style>
+img{
+  vertical-align: middle;
+}
+</style>
+
+
+
+  <form class="formarea" ng-submit="addfteam(item)">
+
+  <div class="container" style="width: 70%">
+  <h3 STYLE="text-align: center;"><u>Add Functional Team</u></h3><br>
+<div align="center">
+  <label style="font-family: sans-serif"><b>Functional Team</b></label>&nbsp;&nbsp;
+  <input style="width: 30%" type="text" name="title" ng-model="item.fteam" required>
+
+  <button type="submit" class="mybutton">ADD</button>
+</div>
+  </div>
+
+  </form>
+
+<div class="formarea"  >
+<div class="container" style="width:60%;padding-right:50px;">
+<table style="margin-right:30px;">
+    <tr style="color:white;background-color:gray;" >
+      <th style="width:30%;" >Functional Team</th>
+      <th style="width:30%">Delete</th>
+    </tr>
+    <tr ng-repeat="item in functionalteams" >
+      <th>{{item.fteam}}</th>
+      <th><button ng-click="deletefteam(item)">DELETE</button></th>
+    </tr>
+  </table>
+</div>
+</div>
+
+<!--
+
+<script>
+$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+</script>
+
+
+<form ng-submit="add(data)">
+  <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test" style="width:300px" ng-model="data">
+    <option value=""></option>
+    <option>American Black Bear</option>
+    <option>Asiatic Black Bear</option>
+    <option>Brown Bear</option>
+    <option>Giant Panda</option>
+    <option>Sloth Bear</option>
+    <option>Sun Bear</option>
+    <option>Polar Bear</option>
+    <option>Spectacled Bear</option>
+  </select>
+  <input type="submit" >
+</form>

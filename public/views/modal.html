@@ -1,0 +1,100 @@
+<form name="myform" class="formarea">
+<div class="container-fluid">
+
+<div class="modal-header">
+  <h3>Edit Accomplishment</h3>
+</div>
+
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>Title</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="text" name="title"  ng-model="title" required><br><br>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>Team</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="text" class="disabledInput" name="fteam"  ng-model="fteam" disabled><br><br>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>Type</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="text" class="disabledInput" name="type"  ng-model="type" disabled><br><br>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>TypeName</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="text" class="disabledInput" name="name"  ng-model="name" disabled><br><br>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>Date</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="date" name="date"  ng-model="date" required><br><br>
+	</div>
+</div>
+
+<div class="row" ng-show="type=='ur'">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>EndDate</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<input style="width: 60%" type="date" name="endDate"  ng-model="endDate" max="{{today}}"><br><br>
+	</div>
+</div>
+
+<div class="row" ng-show="type=='ur'">
+        <div class="col-md-6">
+                <label style="font-family: sans-serif"><b>ILC</b></label>&nbsp;&nbsp;&emsp;&emsp;
+        </div>
+        <div class="col-md-6">
+                <input style="width: 60%" type="text" name="ilc" ng-pattern="/^(\d{0,3}(\.\d{0,1})?)$/"  ng-model="ilc"><br><br>
+	<span ng-show="myform.ilc.$dirty && myform.ilc.$error.pattern" style="color:red">
+        	ILC Hours should be non-negative and maximum 1 decimal
+      </span>
+	</div>
+</div>
+
+<div class="row" ng-show="type=='badges'">
+        <div class="col-md-6">
+                <label style="font-family: sans-serif"><b>URL</b></label>&nbsp;&nbsp;&emsp;&emsp;
+        </div>
+        <div class="col-md-6">
+                <input style="width: 60%" type="text" name="url"  ng-model="url"><br><br>
+        </div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-6">
+		<label style="font-family: sans-serif"><b>Description</b></label>&nbsp;&nbsp;&emsp;&emsp;
+	</div>
+	<div class="col-md-6">
+		<textarea style="width: 70%;height: 50px"  name="description" ng-model="description" required></textarea><br><br>
+	</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="save()">UPDATE</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+</div>
+</form>
+
+
